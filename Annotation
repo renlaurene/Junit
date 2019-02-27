@@ -1,0 +1,68 @@
+// MyClassTest.java
+package haha;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+public class NurseTest {
+   /////////////////////////////////////////////
+   @Before void public() {
+     System.out.println("Start each test");
+   }
+   @After void public() {
+     System.out.println("End each test");
+   }
+
+   @BeforeClass void public() {
+     System.out.println("Start the tests");
+   }
+   @AfterClass void public() {
+     System.out.println("End the tests");
+   }
+   /////////////////////////////////////////////
+
+
+   @Ignore
+   public void testGetNumOfPatients() {
+      Nurse tester = new Nurse(10, 80000);
+      // The test should be failing
+      assertEquals("Result", 10, 
+           tester.getNumOfPatients());
+   }   
+
+
+   @Test(expected = NullPointer) 
+   public void NullPointer_testIsBusy() {
+      Nurse tester = new Nurse(10, 80000);
+      ....
+      throw (NullPointer)
+   }
+   @Test(timeout=100) 
+   public void Timeout_testIsBusy() {
+      access_internet();
+   }
+
+   @Test
+   public void Netgative_testIsBusy() {
+      Nurse tester = new Nurse(10, 80000);
+      // The test should be failing
+      assertEquals("Result", false, 
+           tester.isBusy());
+   }
+   @Test
+   public void Positive_testIsBusy() {
+      Nurse tester = new Nurse(40, 80000);
+      // The test should be successful
+      assertEquals("Result", true,
+           tester.isBusy());
+   }
+
+   @Test
+   public void testRetire() {
+      Nurse tester = new Nurse(40, 80000);
+      tester.retire();
+      assertEquals("Result", 0, 
+           tester.getNumOfPatients());
+      assertEquals("Result", 0, 
+           tester.getSalary());
+   }
+}
